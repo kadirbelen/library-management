@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 
+import { NotFoundError } from '../errors/not-found.error';
 import prisma from '../utils/prisma-client.util';
 import { CreateUserPayload } from '../validations/user.validation';
 
@@ -19,7 +20,7 @@ class UserService {
   }
 
   async getDetails(userId: number) {
-    const user = await prisma.user.findFirstOrThrow({
+    const user = await prisma.user.findFirst({
       where: { id: userId },
       include: {
         borrowed_books: {
@@ -27,6 +28,8 @@ class UserService {
         },
       },
     });
+
+    if (!user) throw new NotFoundError({ resourceName: 'User' });
 
     const { past, present } = user.borrowed_books.reduce(
       (acc, borrowedBook) => {
