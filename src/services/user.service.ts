@@ -4,12 +4,10 @@ import prisma from '../utils/prisma-client.util';
 import { CreateUserPayload } from '../validations/user.validation';
 
 class UserService {
-  async create(body: CreateUserPayload) {
-    const result = await prisma.user.create({
-      data: body,
+  async create(payload: CreateUserPayload) {
+    return await prisma.user.create({
+      data: payload,
     });
-
-    return result;
   }
 
   async list() {

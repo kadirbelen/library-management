@@ -13,7 +13,7 @@ class UserController {
 
     const user = await userService.create(req.body);
 
-    successResponse({ res, statusCode: StatusCodes.OK, data: user });
+    successResponse({ res, statusCode: StatusCodes.CREATED, data: user });
   }
 
   async list(_req: Request, res: Response) {

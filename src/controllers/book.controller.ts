@@ -13,7 +13,7 @@ class BookController {
 
     const book = await bookService.create(req.body);
 
-    successResponse({ res, statusCode: StatusCodes.OK, data: book });
+    successResponse({ res, statusCode: StatusCodes.CREATED, data: book });
   }
 
   async list(_req: Request, res: Response) {
