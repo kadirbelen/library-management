@@ -16,10 +16,6 @@ class BookService {
     return await prisma.book.findUnique({ where: query });
   }
 
-  async getByIdOrThrow(bookId: number) {
-    return await prisma.book.findFirstOrThrow({ where: { id: bookId } });
-  }
-
   async getDetails(bookId: number) {
     const { average_score, ...book } = await prisma.book.findFirstOrThrow({
       where: { id: bookId },
