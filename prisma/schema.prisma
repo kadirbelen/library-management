@@ -6,3 +6,38 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id             Int            @id @default(autoincrement())
+  name           String         @unique @db.VarChar(255)
+  created_at     DateTime       @default(now())
+  borrowed_books BorrowedBook[]
+
+  @@map("users")
+}
+
+model Book {
+  id             Int            @id @default(autoincrement())
+  name           String         @unique @db.VarChar(255)
+  average_score  Float          @default(0)
+  rating_count   Int            @default(0)
+  created_at     DateTime       @default(now())
+  borrowed_books BorrowedBook[]
+
+  @@map("books")
+}
+
+model BorrowedBook {
+  id          Int       @id @default(autoincrement())
+  user_id     Int
+  book_id     Int
+  borrowed_at DateTime  @default(now())
+  returned_at DateTime?
+  score       Int?
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, book_id])
+  @@map("borrowed_books")
+}
