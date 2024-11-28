@@ -15,6 +15,6 @@ app.use('/books', bookRouter);
 
 app.use(errorHandler);
 
-app.listen(3000, () => {
-  console.info('application is running');
+app.listen(process.env.PORT || 3000, () => {
+  console.info('Application is running', process.env.PORT);
 });
