@@ -11,9 +11,9 @@ class BookController {
 
     if (bookIsExist) throw new ConflictError('Book already exist');
 
-    const book = await bookService.create(req.body);
+    await bookService.create(req.body);
 
-    successResponse({ res, statusCode: StatusCodes.CREATED, data: book });
+    successResponse({ res, statusCode: StatusCodes.CREATED });
   }
 
   async list(_req: Request, res: Response) {

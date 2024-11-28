@@ -11,9 +11,9 @@ class UserController {
 
     if (userIsExist) throw new ConflictError('User already exist');
 
-    const user = await userService.create(req.body);
+    await userService.create(req.body);
 
-    successResponse({ res, statusCode: StatusCodes.CREATED, data: user });
+    successResponse({ res, statusCode: StatusCodes.CREATED });
   }
 
   async list(_req: Request, res: Response) {
