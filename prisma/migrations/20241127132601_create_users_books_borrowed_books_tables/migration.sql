@@ -36,9 +36,6 @@ CREATE UNIQUE INDEX "users_name_key" ON "users"("name");
 -- CreateIndex
 CREATE UNIQUE INDEX "books_name_key" ON "books"("name");
 
--- CreateIndex
-CREATE UNIQUE INDEX "borrowed_books_user_id_book_id_key" ON "borrowed_books"("user_id", "book_id");
-
 -- AddForeignKey
 ALTER TABLE "borrowed_books" ADD CONSTRAINT "borrowed_books_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 

@@ -38,6 +38,5 @@ model BorrowedBook {
   user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
   book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
 
-  @@unique([user_id, book_id])
   @@map("borrowed_books")
 }
