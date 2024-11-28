@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 
 import { ConflictError } from '../errors/conflict.error';
 import bookService from '../services/book.service';
-import { successResponse } from '../utils/success-response.utils';
+import { successResponse } from '../utils/success-response.util';
 
 class BookController {
   async create(req: Request, res: Response) {

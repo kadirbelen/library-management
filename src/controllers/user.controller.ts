@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 
 import { ConflictError } from '../errors/conflict.error';
 import userService from '../services/user.service';
-import { successResponse } from '../utils/success-response.utils';
+import { successResponse } from '../utils/success-response.util';
 
 class UserController {
   async create(req: Request, res: Response) {

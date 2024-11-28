@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 import borrowService from '../services/borrow.service';
-import { successResponse } from '../utils/success-response.utils';
+import { successResponse } from '../utils/success-response.util';
 
 class BorrowController {
   async borrowBook(req: Request, res: Response) {
